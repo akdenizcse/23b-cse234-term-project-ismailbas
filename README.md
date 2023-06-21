@@ -1,5 +1,7 @@
 [Social Media Application Mockup Prototype Link](https://www.figma.com/proto/LwaiBusGVs0kNv8rmQC9YR/Mobile-Term-Project-Intermediate-Version?type=design&node-id=12-392&scaling=scale-down&page-id=0%3A1&starting-point-node-id=12%3A392)
 
+[Social Media Application Presentation Video](https://youtu.be/2j63Y9_nfto)
+
 # The Purpose of the App
 The purpose of this app is to enable users to exchange ideas between each other. 
 To enable them to do it online on a large scale.
