@@ -34,8 +34,11 @@ The user can change the profile and cover photo. The user can also edit the user
 The user can log out of the application by clicking on the log out in the menu list on the profile page.
 
 ## User Accounts
-User name-----e-mail-------------- password
+User name---------e-mail-----------password
+
 ismailb -- ismbas43@gmail.com   -- myspace
+
 özgürc  -- freecnsz@outlook.com -- siyamder
+
 ceyda   -- ceydayavuz@gmail.com -- radiohead
 
