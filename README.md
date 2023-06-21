@@ -1,4 +1,4 @@
-[Social Media Application Mockup Prototype Link](https://www.figma.com/proto/LwaiBusGVs0kNv8rmQC9YR/Mobile-Term-Project-Intermediate-Version?type=design&node-id=12-392&scaling=scale-down&page-id=0%3A1&starting-point-node-id=12%3A392)
+[Social Media Application Mockup Prototype Link](https://www.figma.com/proto/LwaiBusGVs0kNv8rmQC9YR/Mobile-Term-Project-Intermediate-Version?type=design&node-id=107-3587&scaling=scale-down&page-id=0%3A1&starting-point-node-id=107%3A3587&mode=design)
 
 [Social Media Application Presentation Video](https://youtu.be/2j63Y9_nfto)
 
