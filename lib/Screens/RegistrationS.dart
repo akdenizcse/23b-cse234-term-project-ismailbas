@@ -69,10 +69,10 @@ class _RegistrationSState extends State<RegistrationS> {
               height: 40,
             ),
             RoundedButton(
-              btnText: 'Create account',
+              btnText: 'Create an Account',
               onBtnPressed: () async {
                 bool isValid =
-                await AuthService.signUp(_name, _email, _password);
+                    await AuthService.signUp(_name, _email, _password);
                 if (isValid) {
                   Navigator.pop(context);
                 } else {

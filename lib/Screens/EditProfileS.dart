@@ -16,13 +16,13 @@ class EditProfileS extends StatefulWidget {
 }
 
 class _EditProfileSState extends State<EditProfileS> {
-   String _name = '';
-   String _bio = '';
-   File? _profileImage;
-   File? _coverImage;
-   String _imagePickedType = '';
-   final _formKey = GlobalKey<FormState>();
-   bool _isLoading = false;
+  String _name = '';
+  String _bio = '';
+  File? _profileImage;
+  File? _coverImage;
+  String _imagePickedType = '';
+  final _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
 
   displayCoverImage() {
     if (_coverImage == null) {
@@ -45,92 +45,65 @@ class _EditProfileSState extends State<EditProfileS> {
       return FileImage(_profileImage!);
     }
   }
-   /** saveProfile() async {
-     _formKey.currentState?.save();
-     if (_formKey.currentState!.validate() && !_isLoading) {
-       setState(() {
-         _isLoading = true;
-       });
-       String profilePictureUrl = '';
-       String coverPictureUrl = '';
-       if (_profileImage == null) {
-         profilePictureUrl = widget.user.profilePicture;
-       } else {
-         profilePictureUrl = await StorageService.uploadProfilePicture('', _profileImage!);
-       }
-       if (_coverImage == null) {
-         coverPictureUrl = widget.user.coverImage;
-       } else {
-         coverPictureUrl = await StorageService.uploadCoverPicture('', _coverImage!);
-       }
-       UserModel user = UserModel(
-         id: widget.user.id,
-         name: _name,
-         profilePicture: profilePictureUrl,
-         email: '',
-         bio: _bio,
-         coverImage: coverPictureUrl,
-       );
 
-       DatabaseServices.updateUserData(user);
-       Navigator.pop(context);
-     }
-   } */
+  Future<void> saveProfile() async {
+    _formKey.currentState?.save();
+    if (_formKey.currentState!.validate() && !_isLoading) {
+      setState(() {
+        _isLoading = true;
+      });
 
-   Future<void> saveProfile() async {
-     _formKey.currentState?.save();
-     if (_formKey.currentState!.validate() && !_isLoading) {
-       setState(() {
-         _isLoading = true;
-       });
+      String profilePictureUrl = widget.user.profilePicture;
+      String coverPictureUrl = widget.user.coverImage;
 
-       String profilePictureUrl = widget.user.profilePicture;
-       String coverPictureUrl = widget.user.coverImage;
+      if (_profileImage != null) {
+        profilePictureUrl = await StorageService.uploadProfilePicture(
+          profilePictureUrl,
+          _profileImage!,
+        );
+      }
 
-       if (_profileImage != null) {
-         profilePictureUrl = await StorageService.uploadProfilePicture(profilePictureUrl, _profileImage!,);
-       }
+      if (_coverImage != null) {
+        coverPictureUrl = await StorageService.uploadCoverPicture(
+          coverPictureUrl,
+          _coverImage!,
+        );
+      }
 
-       if (_coverImage != null) {
-         coverPictureUrl = await StorageService.uploadCoverPicture(coverPictureUrl, _coverImage!,);
-       }
+      UserModel user = UserModel(
+        id: widget.user.id,
+        name: _name,
+        profilePicture: profilePictureUrl,
+        email: '',
+        bio: _bio,
+        coverImage: coverPictureUrl,
+      );
 
-       UserModel user = UserModel(
-         id: widget.user.id,
-         name: _name,
-         profilePicture: profilePictureUrl,
-         email: '',
-         bio: _bio,
-         coverImage: coverPictureUrl,
-       );
+      DatabaseServices.updateUserData(user);
+      Navigator.pop(context);
+    }
+  }
 
-       DatabaseServices.updateUserData(user);
-       Navigator.pop(context);
-     }
-   }
-
-
-
-   handleImageFromGallery() async {
+  handleImageFromGallery() async {
     try {
-      final XFile? pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final XFile? pickedImage =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
       if (pickedImage != null) {
         File imageFile = File(pickedImage.path);
-      if (_imagePickedType == 'profile') {
-        setState(() {
-          _profileImage = imageFile;
-        });
-      } else if (_imagePickedType == 'cover') {
-        setState(() {
-          _coverImage = imageFile;
-        });
-      }
+        if (_imagePickedType == 'profile') {
+          setState(() {
+            _profileImage = imageFile;
+          });
+        } else if (_imagePickedType == 'cover') {
+          setState(() {
+            _coverImage = imageFile;
+          });
+        }
       }
     } catch (e) {
       print(e);
     }
   }
-
 
   @override
   void initState() {
@@ -160,9 +133,9 @@ class _EditProfileSState extends State<EditProfileS> {
                     image: _coverImage == null && widget.user.coverImage.isEmpty
                         ? null
                         : DecorationImage(
-                      fit: BoxFit.cover,
-                      image: displayCoverImage(),
-                    ),
+                            fit: BoxFit.cover,
+                            image: displayCoverImage(),
+                          ),
                   ),
                 ),
                 Container(
@@ -295,9 +268,9 @@ class _EditProfileSState extends State<EditProfileS> {
                         const SizedBox(height: 30),
                         _isLoading
                             ? const CircularProgressIndicator(
-                          valueColor:
-                          AlwaysStoppedAnimation(KPostAppColor),
-                        )
+                                valueColor:
+                                    AlwaysStoppedAnimation(KPostAppColor),
+                              )
                             : const SizedBox.shrink()
                       ],
                     )),

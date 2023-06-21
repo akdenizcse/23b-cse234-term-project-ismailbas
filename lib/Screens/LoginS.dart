@@ -8,134 +8,6 @@ class LoginS extends StatefulWidget {
   _LoginSState createState() => _LoginSState();
 }
 
-/** class _LoginSState extends State<LoginS> {
-  late String _email;
-  late String _password;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: KTweeterColor,
-        centerTitle: true,
-        elevation: 0,
-        title: Text(
-          'Log in',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter Your email',
-              ),
-              onChanged: (value) {
-                _email = value;
-              },
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Enter Your password',
-              ),
-              onChanged: (value) {
-                _password = value;
-              },
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            RoundedButton(
-              btnText: 'LOG IN',
-              onBtnPressed: () async {
-                bool isValid = await AuthService.login(_email, _password);
-                if (isValid) {
-                  Navigator.pop(context);
-                } else {
-                  print('login problem');
-                }
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-} */
-/** class _LoginSState extends State<LoginS> {
-  late String _email;
-  late String _password;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: KTweeterColor,
-        centerTitle: true,
-        elevation: 0,
-        title: Text(
-          'Log in',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter Your email',
-                ),
-                onChanged: (value) {
-                  _email = value;
-                },
-              ),
-              SizedBox(height: 30),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Enter Your password',
-                ),
-                onChanged: (value) {
-                  _password = value;
-                },
-              ),
-              SizedBox(height: 40),
-              RoundedButton(
-                btnText: 'LOG IN',
-                onBtnPressed: () async {
-                  bool isValid = await AuthService.login(_email, _password);
-                  if (isValid) {
-                    Navigator.pop(context);
-                  } else {
-                    print('login problem');
-                  }
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-} */
-
 class _LoginSState extends State<LoginS> {
   String _email = '';
   String _password = '';
@@ -148,7 +20,7 @@ class _LoginSState extends State<LoginS> {
         centerTitle: true,
         elevation: 0,
         title: Text(
-          'Log in',
+          'Log In',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -163,7 +35,7 @@ class _LoginSState extends State<LoginS> {
               SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Enter Your email',
+                  hintText: 'Enter Your Email',
                 ),
                 onChanged: (value) {
                   _email = value;
@@ -173,7 +45,7 @@ class _LoginSState extends State<LoginS> {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Enter Your password',
+                  hintText: 'Enter Your Password',
                 ),
                 onChanged: (value) {
                   _password = value;
@@ -187,7 +59,7 @@ class _LoginSState extends State<LoginS> {
                   if (isValid) {
                     Navigator.pop(context);
                   } else {
-                    print('login problem');
+                    print('Login Problem');
                   }
                 },
               ),
@@ -198,5 +70,3 @@ class _LoginSState extends State<LoginS> {
     );
   }
 }
-
-

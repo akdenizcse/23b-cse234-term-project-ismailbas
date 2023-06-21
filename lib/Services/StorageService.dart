@@ -10,13 +10,16 @@ import 'package:uuid/uuid.dart';
 class StorageService {
   static Future<String> uploadProfilePicture(String url, File imageFile) async {
     String uniquePhotoId = Uuid().v4();
-    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path)).then((value) => File(value!.path));
+    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path))
+        .then((value) => File(value!.path));
 
     if (url.isNotEmpty) {
       RegExp exp = RegExp(r'userProfile_(.*).jpg');
       uniquePhotoId = exp.firstMatch(url)?.group(1) ?? uniquePhotoId;
     }
-    UploadTask uploadTask = storageRef.child('images/users/userProfile_$uniquePhotoId.jpg').putFile(compimage);
+    UploadTask uploadTask = storageRef
+        .child('images/users/userProfile_$uniquePhotoId.jpg')
+        .putFile(compimage);
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     String downloadUrl = await taskSnapshot.ref.getDownloadURL();
     return downloadUrl;
@@ -24,13 +27,16 @@ class StorageService {
 
   static Future<String> uploadCoverPicture(String url, File imageFile) async {
     String uniquePhotoId = Uuid().v4();
-    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path)).then((value) => File(value!.path));
+    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path))
+        .then((value) => File(value!.path));
 
     if (url.isNotEmpty) {
       RegExp exp = RegExp(r'userCover_(.*).jpg');
       uniquePhotoId = exp.firstMatch(url)?.group(1) ?? uniquePhotoId;
     }
-    UploadTask uploadTask = storageRef.child('images/users/userCover_$uniquePhotoId.jpg').putFile(compimage);
+    UploadTask uploadTask = storageRef
+        .child('images/users/userCover_$uniquePhotoId.jpg')
+        .putFile(compimage);
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     String downloadUrl = await taskSnapshot.ref.getDownloadURL();
     return downloadUrl;
@@ -38,19 +44,25 @@ class StorageService {
 
   static Future<String> uploadPostPicture(File imageFile) async {
     String uniquePhotoId = Uuid().v4();
-    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path)).then((value) => File(value!.path));
+    File compimage = await compressImage(uniquePhotoId, XFile(imageFile.path))
+        .then((value) => File(value!.path));
 
-    UploadTask uploadTask = storageRef.child('images/posts/post_$uniquePhotoId.jpg').putFile(compimage);
+    UploadTask uploadTask = storageRef
+        .child('images/posts/post_$uniquePhotoId.jpg')
+        .putFile(compimage);
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     String downloadUrl = await taskSnapshot.ref.getDownloadURL();
     return downloadUrl;
   }
 
-   static Future<XFile?> compressImage(String photoId, XFile image) async {
-      final tempDirection = await getTemporaryDirectory();
-      final path = tempDirection.path;
-      File compressedImage = File(image.path);
-      return await FlutterImageCompress.compressAndGetFile( compressedImage.path, '$path/img_$photoId.jpg', quality: 70,);
-      }
-      }
-
+  static Future<XFile?> compressImage(String photoId, XFile image) async {
+    final tempDirection = await getTemporaryDirectory();
+    final path = tempDirection.path;
+    File compressedImage = File(image.path);
+    return await FlutterImageCompress.compressAndGetFile(
+      compressedImage.path,
+      '$path/img_$photoId.jpg',
+      quality: 70,
+    );
+  }
+}

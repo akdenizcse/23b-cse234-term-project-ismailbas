@@ -8,122 +8,6 @@ class WelcomeS extends StatefulWidget {
   _WelcomeSState createState() => _WelcomeSState();
 }
 
-/** class _WelcomeSState extends State<WelcomeS> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Image.asset(
-                    'assets/logo.png',
-                    height: 200,
-                    width: 200,
-                  ),
-                  Text(
-                    'See what’s happening in the world right now',
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  RoundedButton(
-                      btnText: 'LOG IN',
-                      onBtnPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginS()));
-                      }),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  RoundedButton(
-                      btnText: 'Create account',
-                      onBtnPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegistrationS()));
-                      }),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-} */
-/** class _WelcomeSState extends State<WelcomeS> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                    ),
-                    Image.asset(
-                      'assets/logo.png',
-                      height: 200,
-                      width: 200,
-                    ),
-                    Text(
-                      'See what’s happening in the world right now',
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    RoundedButton(
-                      btnText: 'LOG IN',
-                      onBtnPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginS()),
-                        );
-                      },
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    RoundedButton(
-                      btnText: 'Create account',
-                      onBtnPressed: () async {
-                       await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => RegistrationS()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-} */
 class _WelcomeSState extends State<WelcomeS> {
   @override
   Widget build(BuildContext context) {
@@ -147,7 +31,8 @@ class _WelcomeSState extends State<WelcomeS> {
                     ),
                     const Text(
                       'See what’s happening in the world right now',
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -166,11 +51,12 @@ class _WelcomeSState extends State<WelcomeS> {
                       height: 30,
                     ),
                     RoundedButton(
-                      btnText: 'Create account',
+                      btnText: 'Create an Account',
                       onBtnPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RegistrationS()),
+                          MaterialPageRoute(
+                              builder: (context) => RegistrationS()),
                         );
                       },
                     ),
@@ -184,6 +70,3 @@ class _WelcomeSState extends State<WelcomeS> {
     );
   }
 }
-
-
-

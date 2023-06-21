@@ -14,14 +14,12 @@ class SearchS extends StatefulWidget {
 }
 
 class _SearchSState extends State<SearchS> {
- // Future<QuerySnapshot<Object?>>? _users ;
-  // Future<QuerySnapshot<Map<String, dynamic>>>? _users;
   Future<QuerySnapshot>? _users;
   final TextEditingController _searchController = TextEditingController();
 
-
   clearSearch() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) => _searchController.clear());
+    WidgetsBinding.instance
+        ?.addPostFrameCallback((_) => _searchController.clear());
     setState(() {
       _users = null;
     });
@@ -32,15 +30,16 @@ class _SearchSState extends State<SearchS> {
       leading: CircleAvatar(
         radius: 20,
         backgroundImage: user.profilePicture.isEmpty
-                        ? const AssetImage('assets/placeholder.png')
-                        : NetworkImage(user.profilePicture) as ImageProvider<Object>?,),
+            ? const AssetImage('assets/placeholder.png')
+            : NetworkImage(user.profilePicture) as ImageProvider<Object>?,
+      ),
       title: Text(user.name),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => ProfileS(
-              currentUserId: widget.currentUserId,
-              visitedUserId: user.id,
-            )));
+                  currentUserId: widget.currentUserId,
+                  visitedUserId: user.id,
+                )));
       },
     );
   }
@@ -81,38 +80,40 @@ class _SearchSState extends State<SearchS> {
       ),
       body: _users == null
           ? const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.search, size: 150),
-            Text(
-              'Search on Social Media...',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.search, size: 150),
+                  Text(
+                    'Search on Social Media...',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                  )
+                ],
+              ),
             )
-          ],
-        ),
-      )
           : FutureBuilder(
-          future: _users,
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (snapshot.data!.docs.length == 0) {
-              return const Center(
-                child: Text('No users found!'),
-              );
-            }
+              future: _users,
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.data!.docs.length == 0) {
+                  return const Center(
+                    child: Text('No users found!'),
+                  );
+                }
 
-            return ListView.builder(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (BuildContext context, int index) {
-                  UserModel user = UserModel.fromDoc(snapshot.data!.docs[index]);
-                  return buildUserTile(user);
-                });
-          }),
+                return ListView.builder(
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      UserModel user =
+                          UserModel.fromDoc(snapshot.data!.docs[index]);
+                      return buildUserTile(user);
+                    });
+              }),
     );
   }
 }
